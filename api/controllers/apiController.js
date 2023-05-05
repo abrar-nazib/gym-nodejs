@@ -103,7 +103,7 @@ exports.exerciseByEquipment = (req, res, next) => {
   const equipment = req.params.equipment;
   equipment.toLowerCase(); // lowercase the equipment name for case insensitive match
 
-  const results = dummyDB.filter((item) => item.equipment == equipment);
+  const results = dummyDB.filter((item) => item.equipment === equipment);
   if (results.length == 0) {
     res
       .status(404)

@@ -68,23 +68,25 @@ router.get("/exercises/bodyPart/:bodyPart", bodyPartByName);
  * @swagger
  * /api/exercises/exercise/{id}:
  *   get:
- *     summary: Get an exercise by ID
+ *     summary: Search for an exercise by ID
  *     parameters:
  *       - in: path
  *         name: id
- *         description: The ID of the exercise to retrieve
  *         required: true
+ *         description: ID of the exercise to search for
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: The requested exercise
+ *         description: The exercise object that matches the provided ID
  *         content:
  *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Exercise'
  *       400:
- *         description: Invalid exercise ID provided
+ *         description: Bad request, id parameter is not specified or is not valid
  *       404:
- *         description: No exercise found with the provided ID
+ *         description: No exercise found that matches the provided ID
  */
 router.get("/exercises/exercise/:id", exerciseById); // search by id
 
@@ -206,8 +208,6 @@ router.get("/exercises/target/:target", exerciseByTarget); // returns exercises 
  *                   gifUrl: 'https://media.giphy.com/media/hPPx8yk3Bmqys/giphy.gif'
  *       404:
  *         description: No exercises found
- *     security:
- *       - bearerAuth: []
  *     tags:
  *       - Exercises
  */

@@ -42,9 +42,15 @@ const swaggerOptions = {
   apis: ["./api/routes/*.js"],
 };
 
+const options = {
+  customCss: ".swagger-ui .topbar { display: none }",
+  customSiteTitle: "Exercise API",
+  customfavIcon: "/assets/favicon.ico",
+};
+
 const specs = swaggerJsDoc(swaggerOptions);
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
 
 //  Error handler middleware: must be at the last of all middlewares to catch all errors
 app.use((req, res, next) => {
