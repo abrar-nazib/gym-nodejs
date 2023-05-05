@@ -1,11 +1,10 @@
-const dashboardRoute = require("./dashboardRoute");
+const apiRoute = require("../api/routes/apiRoutes");
 
 const routes = [
   {
-    path: "/dashboard",
-    handler: dashboardRoute,
+    path: "/api",
+    handler: apiRoute,
   },
-
   {
     path: "/",
     handler: (req, res) => {
