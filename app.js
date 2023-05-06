@@ -3,10 +3,14 @@ require("dotenv").config();
 
 // import dependencies
 const express = require("express");
+const mongoose = require("mongoose"); // for database
 const config = require("config"); // for configuration management
+
 const chalk = require("chalk"); // for colorful console messages
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUI = require("swagger-ui-express");
+
+const MONGODB_URI = `mongodb://${config.get("db-host")}:${config.get(
+  "db-port"
+)}/${config.get("db-name")}`;
 
 const app = express();
 
@@ -23,35 +27,6 @@ setMiddlewares(app);
 // Using Routes from routes directory
 setRoutes(app);
 
-// documentation
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: "Exercise API",
-      description: "Exercise API for Gizantech",
-      contact: {
-        name: "Nazib Abrar",
-      },
-      servers: [
-        {
-          url: "http://localhost:3000",
-        },
-      ],
-    },
-  },
-  apis: ["./api/routes/*.js"],
-};
-
-const options = {
-  customCss: ".swagger-ui .topbar { display: none }",
-  customSiteTitle: "Exercise API",
-  customfavIcon: "/assets/favicon.ico",
-};
-
-const specs = swaggerJsDoc(swaggerOptions);
-
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs, options));
-
 //  Error handler middleware: must be at the last of all middlewares to catch all errors
 app.use((req, res, next) => {
   let error = new Error("404 Page Not Found");
@@ -60,14 +35,12 @@ app.use((req, res, next) => {
 });
 app.use((error, req, res, next) => {
   if (error.status === 404) {
-    res.status(404);
     return res.render("pages/error/404", {
       flashMessage: {},
     });
   }
   console.log(chalk.red.inverse(error.message));
   console.log(error);
-  res.status(500);
   return res.render("pages/error/500", {
     flashMessage: {},
   });
@@ -76,6 +49,17 @@ app.use((error, req, res, next) => {
 // Specify port and start the server
 const port = config.get("port");
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// connect database
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log(chalk.green("Database connected"));
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+  })
+  .catch((e) => {
+    return console.log(e);
+  });
