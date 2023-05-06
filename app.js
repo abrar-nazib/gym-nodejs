@@ -43,6 +43,7 @@ const swaggerOptions = {
 };
 
 const options = {
+  // customize swagger ui
   customCss: ".swagger-ui .topbar { display: none }",
   customSiteTitle: "Exercise API",
   customfavIcon: "/assets/favicon.ico",
