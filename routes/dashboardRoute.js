@@ -3,21 +3,9 @@ const router = require("express").Router();
 // Import Controllers
 const {
   dashboardGetController,
-  createProfileGetController,
-  createProfilePostController,
-  editProfileGetController,
-  editProfilePostController,
 } = require("../controllers/dashboardController");
+const { searchGetController } = require("../controllers/searchController");
 
-// Import Middleware
-const { isAuthenticated } = require("../middleware/authMiddleware");
-
-router.get("/", isAuthenticated, dashboardGetController);
-
-router.get("/create-profile", isAuthenticated, createProfileGetController);
-router.post("/create-profile", isAuthenticated, createProfilePostController);
-
-router.get("/edit-profile", isAuthenticated, editProfileGetController);
-router.post("/edit-profile", isAuthenticated, editProfilePostController);
+router.get("/", searchGetController);
 
 module.exports = router;

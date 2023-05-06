@@ -5,7 +5,6 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose"); // for database
 const config = require("config"); // for configuration management
-
 const chalk = require("chalk"); // for colorful console messages
 
 const MONGODB_URI = `mongodb://${config.get("db-host")}:${config.get(
@@ -35,13 +34,13 @@ app.use((req, res, next) => {
 });
 app.use((error, req, res, next) => {
   if (error.status === 404) {
-    return res.render("pages/error/404", {
+    return res.status(404).render("pages/error/404", {
       flashMessage: {},
     });
   }
   console.log(chalk.red.inverse(error.message));
   console.log(error);
-  return res.render("pages/error/500", {
+  return res.status(500).render("pages/error/500", {
     flashMessage: {},
   });
 });
@@ -49,7 +48,7 @@ app.use((error, req, res, next) => {
 // Specify port and start the server
 const port = config.get("port");
 
-// connect database
+// connect database and start the server
 mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,

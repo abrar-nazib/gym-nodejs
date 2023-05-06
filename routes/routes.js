@@ -1,31 +1,25 @@
-const authRoute = require("./authRoute");
 const dashboardRoute = require("./dashboardRoute");
-const playgroundRoute = require("../playground/play");
 const uploadRoute = require("./uploadRoute");
-const apiRoute = require(".../api/apiRoute");
+const exerciseRoute = require("../api/routes/exerciseRoute");
 
 const routes = [
   {
-    path: "/auth",
-    handler: authRoute,
-  },
-  {
     path: "/dashboard",
     handler: dashboardRoute,
-  },
-  {
-    path: "/playground",
-    handler: playgroundRoute,
   },
   {
     path: "/uploads",
     handler: uploadRoute,
   },
   {
+    path: "/api/exercises",
+    handler: exerciseRoute,
+  },
+  {
     path: "/",
     handler: (req, res) => {
       res.json({
-        message: "Hello World",
+        message: "Server Running",
       });
     },
   },
