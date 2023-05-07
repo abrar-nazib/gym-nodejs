@@ -19,7 +19,10 @@ exports.bindUserWithRequest = () => {
 
 exports.isAuthenticated = (req, res, next) => {
   if (!req.session.isLoggedIn) {
-    return res.redirect("/auth/login");
+    // return res.redirect("/auth/login");
+    return res
+      .status(403)
+      .json({ message: "Access denied. Please Log-in", success: false });
   }
   next();
 };

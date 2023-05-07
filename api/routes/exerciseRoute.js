@@ -12,11 +12,13 @@ const {
   exerciseUpdateController,
   exerciseDeleteController,
   exerciseGetByIdController,
+  exerciseGetUniqueFieldsController,
 } = require("../controllers/exerciseController");
 
 const { searchGetController } = require("../../controllers/searchController");
 
-router.get("/", exerciseValidator, searchGetController);
+router.get("/", exerciseGetController);
+router.get("/unique", exerciseGetUniqueFieldsController);
 router.get("/:id", isAuthenticated, exerciseGetByIdController);
 router.post(
   "/",

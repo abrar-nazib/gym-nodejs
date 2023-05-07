@@ -1,63 +1,56 @@
 <%- include('../../partials/head.ejs') %>
-    <!-- content -->
-    <div class="container my-container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="display-4 text-center">
-                    Abrar's Gym
-                </h1>
-                <% if (searchTerm) {%>
-                    <h4 class="text-center">Search Result for: <%= searchTerm %>
-                    </h4>
-                    <% } %>
-                        <% if ( totalPage===0 ) {%>
-                            <h4 class="text-center">No Result Found
-                            </h4>
-                            <% } %>
+    <div class="collapse" id="filter-container">
+
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="target_select">
+                        <option selected value="">Target</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="equipment_select">
+                        <option selected value="">Equipment</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="bodyPart_select">
+                        <option selected value="">Body Part</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 text-center my-3 ">
+                <button type="button" class="btn btn-dark mx-2" onclick="exportPDF()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as PDF
+                </button>
+                <button type="button" class="btn btn-dark mx-2" onclick="exportCSV()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as CSV
+                </button>
+                <button type="button" class="btn btn-dark mx-2" onclick="exportExcel()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as Excel
+                </button>
+                <button type="button" class="btn btn-primary mx-2" onclick="filterByOptions()">
+                    Done
+                </button>
 
             </div>
-        </div>
-        <div class="row my-5">
-            <% exercises.forEach((exercise)=> { %>
-                <div class="col-md-4 my-5" id="<%=exercise._id%>">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<%=exercise.gifUrl%>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%=exercise.name.toUpperCase()%>
-                            </h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>Target:</b>
-                                <%=exercise.target%>
-                            </li>
-                            <li class="list-group-item"><b>Equipment:</b>
-                                <%=exercise.equipment%>
-                            </li>
-                            <li class="list-group-item"><b>Body Part:</b>
-                                <%=exercise.bodyPart%>
-                            </li>
-                        </ul>
-                        <% if(isLoggedIn) {%>
-                            <div class="card-body text-center">
-
-
-                                <button class="btn btn-primary" onclick="fetchExerciseData('<%=exercise._id%>')"><i
-                                        class="fa fa-pen-nib mx-2"></i>Update</button>
-                                <button class="btn btn-danger" onclick="deleteExercise('<%=exercise._id%>')"><i
-                                        class="fa fa-trash mx-2" aria-hidden="true"></i>Delete</button>
-                            </div>
-                            <% } %>
-                    </div>
-                </div>
-                <% }); %>
 
         </div>
     </div>
-    <!-- Button trigger modal -->
+    <!-- content -->
+    <div class="container my-container my-5">
+        <div class="row my-5" id="exerciseContainer">
+
+        </div>
+    </div>
+
+    </div>
+    </div>
 
 
-    <!-- Modal -->
     <%- include("../../partials/modal.ejs") %>
 
         <nav aria-label="Page navigation example">
@@ -73,11 +66,17 @@
                 </li>
             </ul>
         </nav>
+        <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="/scripts/cardCreator.js"></script>
+        <script src="/scripts/fetchHandler.js"></script>
+
+
+
 
         <%- include('../../partials/footer.ejs') %>
 
 
-            <!-- closing tags must -->
             </body>
 
             </html>
