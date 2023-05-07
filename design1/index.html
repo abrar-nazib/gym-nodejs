@@ -1,42 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Load bootstrap 5 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
-    <!-- Load font awesome 5 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
+    />
     <!-- Load style.css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- create a dashboard with side panel -->
     <div class="main-container d-flex">
-        <div class="sidebar" id="side_nav">
-            <div class="header-box">
-                <h1 class="fs-4">
-                    <span class="bg-white text-dark rounded shadow px-2 me-2">
-                        Abrar
-                    </span>
-                </h1>
-                <button class="btn btn-close px-1 py-0">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
+      <div class="sidebar" id="side_nav">
+        <div class="header-box px-2 pt-3 pb-4">
+          <h1 class="fs-4">
+            <span class="bg-white text-dark rounded shadow px-2 me-2">
+              Abrar
+            </span>
+          </h1>
+
+          <ul class="list-unstyled">
+            <li class="active">
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span> <i class="fa fa-home mx-2"></i>Home</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li class="">
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span
+                  ><i class="fa-regular fa-pen-to-square mx-2"></i>Forms</span
+                >
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li class="">
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span><i class="fa fa-desktop mx-2"></i>UI Elements</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li class="">
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span><i class="fa fa-table mx-2"></i>Tables</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li class="">
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+                ><span
+                  ><i class="fa fa-chart-column mx-2"></i>Data
+                  Presentation</span
+                >
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="list-unstyled">
+            <span class="text-white f4">Live</span>
+            <hr class="h-color" />
+            <li>
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span><i class="fa fa-bug mx-2"></i>Additional Pages</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span><i class="fa fa-windows mx-2"></i>Extras</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-decoration-none d-block d-flex justify-content-between py-1"
+              >
+                <span><i class="fa fa-laptop mx-2"></i>Landing Page</span>
+                <span><i class="fa fa-chevron-down mx-2"></i></span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="content"></div>
+      </div>
+      <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <div class="d-flex justify-content-between d-none d-md-block">
+              <i class="fa fa-bars"></i>
+            </div>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              d-flex
+              justify-content-between
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="navbarSupportedContent"
+            >
+              <!-- to the right -->
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Profile</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
 
     <!-- load bootstrap 5 js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
     <!-- load jquery js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</body>
-
+    <script src="scripts.js"></script>
+    <script
+      src="https://kit.fontawesome.com/c8de4501fd.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

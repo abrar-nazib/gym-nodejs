@@ -4,11 +4,32 @@ body{
 
 #side_nav{
     background: #293F54;
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .content{
     min-height: 100vh;
     width: 100%;
+}
+
+hr.h-color{
+    color: #eee;
+}
+
+.sidebar li.active{
+    background: #36485C;
+    /* border-radius: 8px; */
+
+}
+
+.sidebar li.active a, .sidebar li.active a:hover{
+    color: #fff;
+}
+
+.sidebar li a{
+    color: #fff;
+}
+.navbar{
+    background-color:#F6F6F6;
 }
