@@ -38,13 +38,16 @@
                                 <%=exercise.bodyPart%>
                             </li>
                         </ul>
-                        <div class="card-body text-center">
+                        <% if(isLoggedIn) {%>
+                            <div class="card-body text-center">
 
-                            <button class="btn btn-primary" onclick="fetchExerciseData('<%=exercise._id%>')"><i
-                                    class="fa fa-pen-nib mx-2"></i>Update</button>
-                            <button class="btn btn-danger" onclick="deleteExercise('<%=exercise._id%>')"><i
-                                    class="fa fa-trash mx-2" aria-hidden="true"></i>Delete</button>
-                        </div>
+
+                                <button class="btn btn-primary" onclick="fetchExerciseData('<%=exercise._id%>')"><i
+                                        class="fa fa-pen-nib mx-2"></i>Update</button>
+                                <button class="btn btn-danger" onclick="deleteExercise('<%=exercise._id%>')"><i
+                                        class="fa fa-trash mx-2" aria-hidden="true"></i>Delete</button>
+                            </div>
+                            <% } %>
                     </div>
                 </div>
                 <% }); %>

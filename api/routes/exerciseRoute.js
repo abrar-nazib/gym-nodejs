@@ -1,6 +1,10 @@
 const router = require("express").Router();
 
 const exerciseValidator = require("../../validator/exerciseValidator");
+const {
+  isUnAuthenticated,
+  isAuthenticated,
+} = require("../../middleware/authMiddleware");
 
 const {
   exerciseGetController,
@@ -10,9 +14,15 @@ const {
   exerciseGetByIdController,
 } = require("../controllers/exerciseController");
 
-router.get("/", exerciseValidator, exerciseGetController);
-router.get("/:id", exerciseGetByIdController);
-router.post("/", exerciseValidator, exerciseCreateController);
-router.put("/", exerciseValidator, exerciseUpdateController);
-router.delete("/:id", exerciseDeleteController);
+const { searchGetController } = require("../../controllers/searchController");
+
+router.get("/", exerciseValidator, searchGetController);
+router.get("/:id", isAuthenticated, exerciseGetByIdController);
+router.post(
+  "/",
+  [isAuthenticated, exerciseValidator],
+  exerciseCreateController
+);
+router.put("/", [isAuthenticated, exerciseValidator], exerciseUpdateController);
+router.delete("/:id", isAuthenticated, exerciseDeleteController);
 module.exports = router;

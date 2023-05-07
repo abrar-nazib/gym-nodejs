@@ -2,18 +2,6 @@ const Exercise = require("../../models/Exercise");
 const { validationResult } = require("express-validator");
 const errorFormatter = require("../../utils/validationErrorFormatter");
 
-exports.exerciseGetController = async (req, res, next) => {
-  try {
-    let exercises = await Exercise.find().limit(50);
-    res.render("pages/dashboard/dashboard", {
-      title: "dashboard",
-      exercises,
-    });
-  } catch (e) {
-    next(e);
-  }
-};
-
 exports.exerciseCreateController = async (req, res, next) => {
   let { name, target, bodyPart, equipment } = req.body;
   let errors = validationResult(req).formatWith(errorFormatter);
@@ -84,6 +72,7 @@ exports.exerciseGetByIdController = async (req, res, next) => {
       exercise,
     });
   } catch (e) {
+    res.status(500).json({ error: e.message, success: false });
     next(e);
   }
 };

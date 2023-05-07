@@ -12,16 +12,32 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
                 </li>
+                <% if(!isLoggedIn){ %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Log-in</a>
+                    </li>
+                    <% } %>
+                        <% if(isLoggedIn) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/auth/logout">Log-out</a>
+                            </li>
+                            <% } %>
+
 
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/dashboard" method="GET">
-                <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#create_modal">
-                    <i class="fa fa-plus mx-1" aria-hidden="true"></i>Create
-                </button>
+                <% if(isLoggedIn){ %>
+                    <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#create_modal">
+                        <i class="fa fa-plus mx-1" aria-hidden="true"></i>Create
+                    </button>
+                    <% } %>
 
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </div>
