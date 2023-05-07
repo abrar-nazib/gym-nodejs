@@ -19,12 +19,35 @@
     <!-- create a dashboard with side panel -->
     <div class="main-container d-flex">
       <div class="sidebar" id="side_nav">
-        <div class="header-box px-2 pt-3 pb-4">
-          <h1 class="fs-4">
-            <span class="bg-white text-dark rounded shadow px-2 me-2">
-              Abrar
-            </span>
-          </h1>
+        <div
+          class="header-box px-2 pt-3 pb-4 d-flex flex-column justify-content-between"
+        >
+          <!-- fontawesome web icon big -->
+          <div class="d-flex flex-row justify-content-left pb-3">
+            <i class="fa fa-globe fs-3 text-white"></i>
+            <span class="fs4 text-white px-3">Company Name</span>
+          </div>
+
+          <div
+            class="header text-white fs4 d-flex flex-row justify-content-left pb-3"
+          >
+            <!-- avatar image -->
+            <div class="d-flex flex-column justify-content-between">
+              <img
+                class="rounded-circle"
+                src="avatar.jpg"
+                width="60"
+                height="60"
+                alt="logo"
+              />
+              <span>General</span>
+            </div>
+
+            <div class="d-flex flex-column justify-content-around px-3">
+              <span class="fs-6">Welcome</span>
+              <span class="fs-5">Nazib Abrar</span>
+            </div>
+          </div>
 
           <ul class="list-unstyled">
             <li class="active">
@@ -137,9 +160,23 @@
               <!-- to the right -->
               <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Profile</a
+                  <a
+                    class="nav-link active d-flex justify-content-right"
+                    aria-current="page"
+                    href="#"
                   >
+                    <span>
+                      <!-- fontawesome message box icon -->
+                      <i class="fa fa-envelope mx-2"></i>
+                      <img
+                        class="rounded-circle"
+                        src="avatar.jpg"
+                        width="50"
+                        height="50"
+                        alt="logo"
+                      /><span> Nazib Abrar </span>
+                    </span>
+                  </a>
                 </li>
               </ul>
             </div>
