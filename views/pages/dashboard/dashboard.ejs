@@ -1,0 +1,82 @@
+<%- include('../../partials/head.ejs') %>
+    <div class="collapse" id="filter-container">
+
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="target_select">
+                        <option selected value="">Target</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="equipment_select">
+                        <option selected value="">Equipment</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label="Default select example" id="bodyPart_select">
+                        <option selected value="">Body Part</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 text-center my-3 ">
+                <button type="button" class="btn btn-dark mx-2" onclick="exportPDF()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as PDF
+                </button>
+                <button type="button" class="btn btn-dark mx-2" onclick="exportCSV()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as CSV
+                </button>
+                <button type="button" class="btn btn-dark mx-2" onclick="exportExcel()">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export as Excel
+                </button>
+                <button type="button" class="btn btn-primary mx-2" onclick="filterByOptions()">
+                    Done
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- content -->
+    <div class="container my-container my-5">
+        <div class="row my-5" id="exerciseContainer">
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+
+    <%- include("../../partials/modal.ejs") %>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" name="page" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" name="page" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" name="page" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="/scripts/cardCreator.js"></script>
+        <script src="/scripts/fetchHandler.js"></script>
+
+
+
+
+        <%- include('../../partials/footer.ejs') %>
+
+
+            </body>
+
+            </html>

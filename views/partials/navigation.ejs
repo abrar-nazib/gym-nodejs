@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Gym</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+                </li>
+                <% if(!isLoggedIn){ %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/signup">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/auth/login">Log-in</a>
+                    </li>
+                    <% } %>
+                        <% if(isLoggedIn) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/auth/logout">Log-out</a>
+                            </li>
+                            <% } %>
+
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/dashboard" method="GET">
+                <% if(isLoggedIn){ %>
+                    <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#create_modal">
+                        <i class="fa fa-plus mx-1" aria-hidden="true"></i>Create
+                    </button>
+                    <% } %>
+
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                        <button class="btn btn-info mx-2 text-white" type="button" data-toggle="collapse"
+                            data-target="#filter-container" aria-expanded="false" aria-controls="filterContainer">
+                            <i class="fa fa-filter"></i> Filter
+                        </button>
+
+        </div>
+        </form>
+    </div>
+    </div>
+</nav>
